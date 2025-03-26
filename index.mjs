@@ -9,9 +9,10 @@ async function readdir(dir) {
   const hiddenFiles = [];
 
   files.forEach(file => {
+    if (!file.isFile()) return;
     if (file.name.startsWith('.')) {
       hiddenFiles.push(file.name);
-    } else if (file.isFile()) {
+    } else {
       publicFiles.push(file.name);
     }
   });
